@@ -17,7 +17,7 @@ public abstract class BaseTransaction implements TransactionInterface {
      * Instialises the field, attributes of a transaction
      * Creates a object of this
      */
-    public BaseTransaction(int amount, @NotNull Calendar date)  {
+    public BaseTransaction(int amount, @NotNull Calendar date) {
         this.amount = amount;
         this.date = (Calendar) date.clone();
         int uniq = (int) Math.random()*10000;
@@ -26,6 +26,7 @@ public abstract class BaseTransaction implements TransactionInterface {
 
     /**
      * getAmount()
+     *       
      * @return integer
      */
     public double getAmount() {
@@ -47,5 +48,5 @@ public abstract class BaseTransaction implements TransactionInterface {
     }
     // Method to print a transaction receipt or details
     public abstract void printTransactionDetails();
-    public abstract void apply(BankAccount ba);
+    public abstract boolean apply(BankAccount ba) throws InsufficientFundsException;
 }

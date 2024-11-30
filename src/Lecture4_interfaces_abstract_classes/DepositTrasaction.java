@@ -19,12 +19,20 @@ public class DepositTrasaction extends BaseTransaction {
 
     // Method to print a transaction receipt or details
     public void printTransactionDetails(){
-        System.out.println("Deposit Trasaction: "+this.toString());
+        System.out.println("Deposit Transaction: "+this.toString());
     }
 
-    public void apply(BankAccount ba){
-        double curr_balance = ba.getBalance();
-        double new_balance = curr_balance + getAmount();
-        ba.setBalance(new_balance);
+    @Override
+    public boolean apply(BankAccount ba) {
+        double currentBalance = ba.getBalance();
+        double newBalance = currentBalance + getAmount();
+        ba.setBalance(newBalance);
+
+
+        ba.addTransaction(this);
+
+        System.out.println("Deposit applied successfully! New balance= " + newBalance);
+        return false;
     }
+
 }
