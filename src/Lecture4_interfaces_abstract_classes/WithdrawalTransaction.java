@@ -12,8 +12,8 @@ public class WithdrawalTransaction extends BaseTransaction {
     /**
      * Checks if the withdrawal amount is valid.
      *
-     * @param amt the amount to check
-     * @return true if the amount is positive, false otherwise
+     * @param amt-amount to check
+     * @return true if the amount is positive, false otherwis
      */
     private boolean checkWithdrawalAmount(int amt) {
         return amt > 0;
@@ -21,9 +21,8 @@ public class WithdrawalTransaction extends BaseTransaction {
 
     /**
      * Overriding the apply() method to handle withdrawals.
-     * This method ensures:
      * - If the current balance is sufficient, the withdrawal amount is deducted.
-     * - If the balance is positive but less than the withdrawal amount, all balance is withdrawn.
+     * - If the balance is positive but less than the withdrawal amount, all the amount is withdrawn.
      * - If the balance is zero or negative, the transaction is denied.
      *
      * @param ba-bank account to apply the transaction to
@@ -66,36 +65,35 @@ public class WithdrawalTransaction extends BaseTransaction {
                 throw new InsufficientFundsException("Insufficient balance for the withdrawal.");
             }
         } catch (InsufficientFundsException e) {
-            System.out.println("Transaction failed: ");
+            System.out.println("Transaction failed!!");
         } catch (Exception e) {
             System.out.println("An unexpected error occurred: ");
         } finally {
             if (!success) {
-                System.out.println("Transaction failed. Please try again later.");
+                System.out.println("Transaction failed!!");
             }
         }
         return success;
     }
 
     /**
-     * Reverses the withdrawal transaction by restoring the withdrawal amount back to the bank account.
      *
      * @param ba-bank account to reverse the transaction for
      * @return true if the reversal is successful and false if unsuccessful
      */
     public boolean reverse(BankAccount ba) {
         try {
-            double currentBalance = ba.getBalance();  // Get the current balance of the bank account
-            double reversalAmount = getAmount();      // Get the transaction amount
+            double currentBalance = ba.getBalance();
+            double reversalAmount = getAmount();
 
             ba.setBalance(currentBalance + reversalAmount); // Add the withdrawal amount back
-            System.out.println("Withdrawal transaction reversed. New balance: " + (currentBalance + reversalAmount));
+            System.out.println("Your transaction has been reversed. New balance: " + (currentBalance + reversalAmount));
             return true;
         } catch (NullPointerException e) {
             System.out.println("Error: Bank account object is null.");
             return false;
         } catch (Exception e) {
-            System.out.println("An unexpected error occurred while reversing: ");
+            System.out.println("An unexpected error occurred while reversing!! ");
             return false;
         }
     }

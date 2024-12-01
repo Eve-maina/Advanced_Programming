@@ -20,39 +20,24 @@ public class BaseTransaction2 implements TransactionInterface {
         this.transactionID = getTransactionID();
     }
 
-    /**
-     * Get the transaction amount
-     *
-     * @return Transaction amount
-     */
+
     @Override
     public double getAmount() {
         return this.amount;
     }
 
-    /**
-     * Get the transaction date
-     *
-     * @return Transaction date
-     */
     @Override
     public Calendar getDate() {
         return this.date;
     }
 
-    /**
-     * Get the transaction ID
-     *
-     * @return Transaction ID
-     */
+
     @Override
     public String getTransactionID() {
         return UUID.randomUUID().toString(); // Generating a unique ID for each transaction
     }
 
-    /**
-     * Method to print out details of the transaction
-     */
+
     public void printTransactionDetails() {
         System.out.println("Transaction ID: " + this.transactionID);
         System.out.println("Transaction Date: " + this.date.getTime());
@@ -63,6 +48,7 @@ public class BaseTransaction2 implements TransactionInterface {
      * Method to apply this transaction to a Bank account
      *
      * @param ba-The BankAccount object to apply this transaction on
+     *
      */
     public void apply(BankAccount ba) {
         // Implemented in subclasses-DepositTransaction and WithdrawalTransaction

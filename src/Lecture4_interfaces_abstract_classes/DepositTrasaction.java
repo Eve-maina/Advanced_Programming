@@ -28,10 +28,9 @@ public class DepositTrasaction extends BaseTransaction {
         double newBalance = currentBalance + getAmount();
         ba.setBalance(newBalance);
 
-
         ba.addTransaction(this);
 
-        System.out.println("Deposit applied successfully! New balance= " + newBalance);
+        System.out.println("Your deposit has been applied successfully. Your New balance= " + newBalance);
         return false;
     }
 
